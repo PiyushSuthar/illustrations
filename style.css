@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
+body{
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+a{
+    text-decoration: none;
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+/**
+
+hamburger
+**/
+.hamburger{
+    cursor: pointer;
+    width: 30px;
+    display: none;
+}
+.bars{
+    background-color: slategray;
+    width: 100%;
+    height:3px;
+    margin-bottom: 6px;
+}
+
+.logo{
+    float: left;
+}
+.headnav{
+    display: block;
+}
+
+nav ul  {
+    display: flex;
+    list-style: none;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+nav ul li{
+    float: left;
+    margin-left: 15px;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+.card{
+    padding: 20px 0 20px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 31%;
+    margin: 10px;
+    transition: 0.4s all ease;
+}
+.headnav hr{
+    display: none;
+}
+
+.card img{
+    width: 90%;
+    text-align: center;
+}
+button{
+    border: none;
+    padding: 12px;
+    margin: 10px;
+    cursor: pointer;
+    color: #ffffff;
+    border-radius: 50px;
+    background-color: royalblue;
+box-shadow:  27px 27px 54px #cfcfcf, 
+             -27px -27px 54px #ffffff;
+             font-family: 'Montserrat Alternates', sans-serif;
+font-weight: 500;
+}
+/**responsive design**/
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .card{
+        width:100%;
+        margin:0;
+    }
+    .container{
+        flex-direction: column;
+    }
+    .hamburger{
+        display: block;
+    }
+    nav{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    header{
+        text-align: center;
+    }
+    .headnav  {
+        display: none;
+    }
+    .headnav li{
+        float: none;
+        width: 100%;
+        padding: 10px;
+    }
+    .headnav hr{
+        display: block;
+    }
+}

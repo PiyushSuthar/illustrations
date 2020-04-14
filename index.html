@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <meta name="description" content="The Best free illustrations">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Free illustrations - Piyush Suthar</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">   
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1 class="logo"><a href="/">Piyush Suthar</a></h1>
+            <div class="hamburger">
+                <div class="bars"></div>
+                <div class="bars"></div>
+                <div class="bars"></div>
+            </div>
+            <ul class="headnav">
+                <a href="/"><li>Home</li></a>
+                <a href="/illustrations"><li>Illustrations</li></a>
+                <a href="/contact.html"><li>Contact</li></a>
+            </ul>
+           
+        </nav>
+        <h1 class="main">Illustration</h1>
+    </header>
+        <hr>
+    <main>
+        <div id="root"></div>
+
+    </main>
+    <hr>
+    <footer>
+        <nav>
+            <p>© 2020 Piyush Suthar</p>
+            <ul>
+                <a href="/"><li>Home</li></a>
+            </ul>
+        </nav>
+    </footer>
+
+    <script>
+
+        
+		$(document).ready(function(){
+			$("div.hamburger").click(function(){
+				$(".headnav").slideToggle();
+			});
+		});
+ 
+
+
+
+        const app = document.getElementById('root')
+
+const container = document.createElement('section')
+container.setAttribute('class', 'container')
+
+app.appendChild(container)
+
+var request = new XMLHttpRequest()
+request.open('GET', '/data.json', true)
+request.onload = function() {
+  // Begin accessing JSON data here
+  var data = JSON.parse(this.response)
+  if (request.status >= 200 && request.status < 400) {
+    data.forEach(movie => {
+      const card = document.createElement('div')
+      card.setAttribute('class', 'card')
+
+      const imglink = document.createElement("a")
+      imglink.setAttribute("href",movie.imgins)
+      imglink.setAttribute("data-fancybox","gallery")
+      imglink.setAttribute("data-caption",movie.id)
+
+      const img = document.createElement('img')
+      img.setAttribute("src",movie.imgins);
+      img.setAttribute("class","lightbox")
+
+      const pngbutton = document.createElement("button")
+      pngbutton.textContent="Download PNG"
+
+      const pnglink = document.createElement("a")
+      pnglink.setAttribute("href",movie.pngdown)
+
+      const downdiv = document.createElement("div")
+      downdiv.setAttribute("class","downdiv")
+             
+      const svgbutton = document.createElement("button")
+     svgbutton.textContent="Download SVG"
+
+      const svglink = document.createElement("a")
+      svglink.setAttribute("href",movie.svgdown)
+
+      const id = document.createElement("h2")
+      id.textContent=movie.id
+
+      container.appendChild(card)
+      card.appendChild(imglink)
+      imglink.appendChild(img)
+      card.appendChild(id)
+      card.appendChild(downdiv)
+      downdiv.appendChild(pnglink)
+      pnglink.appendChild(pngbutton)
+      downdiv.appendChild(svglink)
+      svglink.appendChild(svgbutton)
+    })
+  } else {
+    const errorMessage = document.createElement('marquee')
+    errorMessage.textContent = `Gah, it's not working!`
+    app.appendChild(errorMessage)
+  }
+}
+
+request.send()
+
+    </script>
+</body>
+
+</html>
