@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="shortcut icon" href="img/Mountains.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <meta charset="utf-8">
     <meta name="description" content="The Best free illustrations">
@@ -65,7 +66,7 @@ container.setAttribute('class', 'container')
 app.appendChild(container)
 
 var request = new XMLHttpRequest()
-request.open('GET', '/data.json', true)
+request.open('GET', './data.json', true)
 request.onload = function() {
   // Begin accessing JSON data here
   var data = JSON.parse(this.response)
